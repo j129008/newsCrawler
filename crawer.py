@@ -15,6 +15,7 @@ for i in range(start,end+1):
         title = soup.select('.content_title')[0].string
         post.append(str(title))
     except:
+        print('404')
         continue
 
     content = ''
