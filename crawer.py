@@ -1,10 +1,11 @@
 import urllib.request
 from bs4 import BeautifulSoup
+import pickle
 
 data = []
 url = 'http://newtalk.tw/news/view/2008-08-28/'
 
-for i in range(1,10):
+for i in range(1,5):
     post = []
     fp = urllib.request.urlopen(url+str(i))
     soup = BeautifulSoup(fp , 'html.parser')
@@ -20,4 +21,6 @@ for i in range(1,10):
             content += lineStr.replace('\u3000','')
     post.append(content)
     data.append(post)
-print(data)
+
+with open('newsData.pkl','wb') as fs:
+    pickle.dump(data, fs)
