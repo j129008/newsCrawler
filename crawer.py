@@ -11,7 +11,7 @@ for i in range(1,5):
     soup = BeautifulSoup(fp , 'html.parser')
 
     title = soup.select('.content_title')[0].string
-    post.append(title)
+    post.append(str(title))
 
     content = ''
     lineList = soup.txt.find_all('p')
@@ -19,7 +19,7 @@ for i in range(1,5):
         lineStr = line.string
         if (lineStr != None) and ("連結" not in lineStr):
             content += lineStr.replace('\u3000','')
-    post.append(content)
+    post.append(str(content))
     data.append(post)
 
 with open('newsData.pkl','wb') as fs:
