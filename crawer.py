@@ -4,14 +4,18 @@ import pickle
 
 data = []
 url = 'http://newtalk.tw/news/view/2008-08-28/'
-
-for i in range(1,5):
+start = 1
+end = 5
+for i in range(start,end+1):
+    print(str(i)+'/'+str(end))
     post = []
     fp = urllib.request.urlopen(url+str(i))
     soup = BeautifulSoup(fp , 'html.parser')
-
-    title = soup.select('.content_title')[0].string
-    post.append(str(title))
+    try:
+        title = soup.select('.content_title')[0].string
+        post.append(str(title))
+    except:
+        continue
 
     content = ''
     lineList = soup.txt.find_all('p')
