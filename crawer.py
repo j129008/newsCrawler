@@ -1,11 +1,12 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import pickle
+import sys
 
 data = []
 url = 'http://newtalk.tw/news/view/2008-08-28/'
-start = 1
-end = 5
+start = int(sys.argv[1])
+end = int(sys.argv[2])
 for i in range(start,end+1):
     print(str(i)+'/'+str(end))
     post = []
