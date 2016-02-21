@@ -14,7 +14,9 @@ for i in range(start,end+1):
     soup = BeautifulSoup(fp , 'html.parser')
     try:
         title = soup.select('.content_title')[0].string
+        author = soup.select('.content_reporter')[0].a.string
         post.append(str(title))
+        post.append(str(author))
     except:
         print('404')
         continue
