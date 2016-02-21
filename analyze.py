@@ -1,4 +1,5 @@
 import pickle
+import re
 # import jieba
 # import jieba.analyse
 # import operator
@@ -10,7 +11,7 @@ with open("./newsDataCn.pkl", 'rb') as fr:
 likes = dict()
 posts = dict()
 for i in range(len(data)):
-    authors = data[i][1].split("、")
+    authors = re.split('、|,' ,data[i][1].replace(" ",""))
     likesCnt = data[i][2]
     for author in authors:
         try:
