@@ -2,10 +2,10 @@ import pickle
 import re
 # import jieba
 # import jieba.analyse
-# import operator
+import operator
 
 data = []
-with open("./newsDataCn.pkl", 'rb') as fr:
+with open("./newsData.pkl", 'rb') as fr:
     data = pickle.load(fr)
 
 likes = dict()
@@ -21,8 +21,10 @@ for i in range(len(data)):
             likes[author] = int(likesCnt)
             posts[author] = 1
 
+authorAvgLikes = dict()
 for author in likes:
-    print( author + ' ' + str(likes[author]/posts[author]) )
+    authorAvgLikes[author] = int(likes[author]/posts[author])
+print(sorted(authorAvgLikes.items(), key=operator.itemgetter(1)))
 # allTag = []
 # for i in range(1, len(data)):
     # allTag += jieba.analyse.extract_tags(data[i][1],topK=3)
